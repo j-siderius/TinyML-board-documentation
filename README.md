@@ -8,19 +8,19 @@ software, setup, examples and more.
 
 ## Contents
 - [Hardware](#hardware)
--   [Sensors](#sensors)
--   [Processor](#processor)
--   [Input/Output](#inputoutput)
--   [Circuit board](#circuit-board)
-- [Setup](#setup)
+  - [Sensors](#sensors)
+  - [Processor](#processor)
+  - [Input/Output](#inputoutput)
+  - [Circuit board](#circuit-board)
 - [Software](#software)
--   [Arduino](#arduino)
--   [Libraries](#libraries)
--   [TensorFlow Lite Micro library](#tensorflow-lite-micro-library)
+  - [Arduino](#arduino)
+    - [Serial Port Setup](#serial-port-setup)
+  - [Libraries](#libraries)
+  - [TensorFlow Lite Micro library](#tensorflow-lite-micro-library)
 - [Code examples](#code-examples)
--   [Sensor examples](#sensor-examples)
--   [I/O examples](#io-examples)
--   [TensorFlow Lite Micro examples](#tensorflow-lite-micro-examples)
+  - [Sensor examples](#sensor-examples)
+  - [I/O examples](#io-examples)
+  - [TensorFlow Lite Micro examples](#tensorflow-lite-micro-examples)
 - [License and contact](#license-and-contact)
 
 ## Hardware
@@ -28,7 +28,10 @@ software, setup, examples and more.
 The TinyML board contains several sensors and a powerfull processor to get you up and running with TinyML quickly. 
 In the following sections, a general overview as well as technical details on all hardware can be found.
 
-![TinyML board](assets/images/tinyml-board-v21.png)
+<div align="center">
+    <img src="assets/images/tinyml-board-v21.png" alt="TinyML board">
+</div>
+
 
 ### Sensors
 
@@ -71,28 +74,13 @@ Besides sensors, the TinyML board also contains multiple Inputs and Outputs (I/O
 
 Below you see a systematic overview of all hardware present on the TinyML board. For detailed information about the circuit board, refer to the [Circuit board documentation]().
 
-![TinyML board systematic overview](assets/images/tinyml-board-v21.png)
-
-## Setup
-
-The TinyML board requires relatively little setup. In order to start using it, connect a USB-C cable to the board and plug it into a free USB port on your system.
-
-No drivers are required for the TinyML board. Sometimes, it is nescessary to know on which serial port the TinyML board is connected. To find this out, perform the following steps:
-
-**Windows**
-1. Open **Device Manager** by going to Start and searching for the program. (Alternatively, you can press the <kbd>![Windows Key](assets/images/winlogo.png)</kbd> key and start searching)
-2. Open the **Ports (COM & LPT)** section.
-3. Plug in the TinyML board and observe which COM port was added to this list.
-
-**Mac**
-1. Open the **Terminal** application by going to Applications>Utilities. (Alternatively, you can press the <kbd>![CMD Key](assets/images/cmdlogo.png) + Spacebar</kbd> keys and search for Terminal)
-2. Enter the following command `ls /dev/tty*` and press <kbd>Enter</kbd>.
-3. Plug in the TinyML board and run the command again, observe which port was added to the list.
+<div align="center">
+    <img src="assets/images/tinyml-board-v21.png" alt="TinyML board">
+</div>
 
 ## Software
 
-In order to use the TinyML board, it needs to be correctly setup. Below sections detail the setup, 
-through the software installation, sensor libraries and finally the TensorFlow Lite Micro setup.
+In order to use the TinyML board, it needs to be correctly setup. The TinyML board requires no hardware setup. In order to start using it, connect a USB-C cable to the board and plug it into a free USB port on your system. Below sections detail the setup, through the software installation, sensor libraries and finally the TensorFlow Lite Micro setup.
 
 ### Arduino
 
@@ -112,7 +100,38 @@ In order to program the TinyML board, the [ESP32](#processor) platform need to b
 5. Search for **ESP32** and install the platform by Espressif Systems
 6. Restart the Arduino IDE
 
-For more advanced installations, for example in Platform IO, follow this [installation guide](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html).
+<div align="center">
+    <img src="assets/images/arduino-preferences.png" alt="Arduino Preferences menu" width="45%">
+    <img src="assets/images/arduino-boards-manager.png" alt="Arduino Boards Manager" width="45%">
+</div>
+
+For more advanced installations, for example in Platform IO, follow this [advanced installation guide](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html).
+
+In order to use all functions that the ESP32S3 processor has, Arduino IDE must be properly configured when programming the TinyML board. Below are the most important settings, these need to be changed in the **Settings menu** (Windows + Mac: Tools):
+
+- **Board** - *ESP32S3 Dev Module*: This sets the correct processor and board configuration for the TinyML board. To select the ESP32 Dev Module, first select the *esp* platform.
+- **Port** - *port here*: Enter the serial port of the TinyML board here. Refer to the guide [Serial Port](#serial-port-setup) to find this port.
+- **USB CDC On Boot** - *Enabled*: This setting enables the onboard USB-C port to be used for serial communication.
+- **Flash Size** - *16MB (128Mb)*: This setting uses the full storage of the ESP32S3, enabling space for larger projects and more code.
+- **PSRAM** - *OPI PSRAM*: This setting enables the fast built-in RAM of the ESP32S3.
+
+<div align="center">
+    <img src="assets/images/arduino-programming-settings.png" alt="Arduino Board settings">
+</div>
+
+#### Serial Port setup
+
+No drivers are required for the TinyML board. However, sometimes, it is nescessary to know on which serial port the TinyML board is connected. To find this out, perform the following steps:
+
+*Windows*
+1. Open **Device Manager** by going to Start and searching for the program. (Alternatively, you can press the <kbd>![Windows Key](assets/images/winlogo.png)</kbd> key and start searching)
+2. Open the **Ports (COM & LPT)** section.
+3. Plug in the TinyML board and observe which COM port was added to this list.
+
+Mac*
+1. Open the **Terminal** application by going to Applications>Utilities. (Alternatively, you can press the <kbd>![CMD Key](assets/images/cmdlogo.png) + Spacebar</kbd> keys and search for Terminal)
+2. Enter the following command `ls /dev/tty*` and press <kbd>Enter</kbd>.
+3. Plug in the TinyML board and run the command again, observe which port was added to the list.
 
 ### Libraries
 
