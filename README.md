@@ -1,6 +1,6 @@
 # TinyML Board
 
-Board revision: **v2.1**
+![Board version: 2.1](assets/images/version21.svg)
 
 The TinyML board is a development board specifically tailored to the exploration of TinyML concepts and to test possible applications of TinyML in an easy way.
 This repository documents the functionality and usage of the TinyML Board. Use the contents header below to navigate to information about the hardware, 
