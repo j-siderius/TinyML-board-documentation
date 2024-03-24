@@ -22,6 +22,7 @@ software, setup, examples and more.
   - [Sensor examples](#sensor-examples)
   - [I/O examples](#io-examples)
   - [TensorFlow Lite Micro examples](#tensorflow-lite-micro-examples)
+  - [Board tests](#board-tests)
 - [License and contact](#license-and-contact)
 
 ## Hardware
@@ -186,6 +187,8 @@ To upload a program to the TinyML board, please follow the steps below:
 
 Example code for all described functions of the TinyML board can be found below. They are divided into sensors, I/O and TensorFlow Lite Micro examples.
 
+The TinyML board usually comes pre-programmed with a Board Test firmware. This program lets you test all functionality of the TinyML board. To start the test, just connect the TinyML board to your system and open the Serial Monitor in Arduino IDE (Windows + Mac: either through GUI or Tools>Serial Monitor).
+
 Additional (advanced) examples can be found in the [ESP32 Arduino library documentation](https://docs.espressif.com/projects/arduino-esp32/en/latest/libraries.html).
 
 ### Sensor examples
@@ -207,9 +210,13 @@ Additional (advanced) examples can be found in the [ESP32 Arduino library docume
 
 - TensorFlow Lite Micro sine example [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-tensorflowlitemicro-example/)
 
+### Board tests
+
+- TinyML Board Test [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-tests/)
+
 ## License and Contact
 
-**TODO**: License information here
+<span style="color:red">**TODO:**</span> License information here
 
 <br>
 
