@@ -45,4 +45,5 @@ The sensors are connected with the following I2C addresses:
 - **VL53L0X** - 0x29
 
 <br>
+
 **&copy; J Siderius 2024**
