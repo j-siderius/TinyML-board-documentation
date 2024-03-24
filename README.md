@@ -28,24 +28,24 @@ software, setup, examples and more.
 The TinyML board contains several sensors and a powerfull processor to get you up and running with TinyML quickly. 
 In the following sections, a general overview as well as technical details on all hardware can be found.
 
-![TinyML board]()
+![TinyML board](assets/images/tinyml-board-v21.png)
 
 ### Sensors
 
 The TinyML board contains five different sensors that can be used for gathering data. To see how to use all sensors, see the [Code Examples](#code-examples).
 To see where all sensors are located, refer to the [Circuit Board](#circuit-board) section.
 
-- **Microphone (I2S)** [ICS-43434]() - This sensor measures the amplitude and pitch of sound.
-- **Time-of-Flight range sensor** [VL53L0X]() - This sensor measures short-range distance.
-- **Environmental sensor** [BME280]() - This sensor measures temperature, relative humidity and atmospheric pressure.
-- **Hall effect magnet sensor** [AH49E]() - This sensor measures the magnetic field around its axis.
-- **Inertial Measurement Unit (IMU)** [BMI270]() - This sensor measures both the angular motion using a gyroscope, as well as the acceleration using an accelerometer.
+- **Microphone (I2S)** [ICS-43434](assets/datasheets/ics43434.pdf) - This sensor measures the amplitude and pitch of sound.
+- **Time-of-Flight range sensor** [VL53L0X](assets/datasheets/vl53l0x.pdf) - This sensor measures short-range distance.
+- **Environmental sensor** [BME280](assets/datasheets/bme280.pdf) - This sensor measures temperature, relative humidity and atmospheric pressure.
+- **Hall effect magnet sensor** [AH49E](assets/datasheets/ah49e.pdf) - This sensor measures the magnetic field around its axis.
+- **Inertial Measurement Unit (IMU)** [BMI270](assets/datasheets/bmi270.pdf) - This sensor measures both the angular motion using a gyroscope, as well as the acceleration using an accelerometer.
 
 ### Processor
 
 The TinyML board is fitted with an ESP32-S3 SoC. The processor features a fast 240MHz, dual-core processor, large 16MB storage and 8MB RAM. 
 Additionally, it has Bluetooth 5 and WiFi capabilities, making it easy to connect your TinyML board to the internet, for example to share sensor data.
-You can learn more about the onboard chip in its datasheet: [ESP-S3-WROOM1-N16R8]().
+You can learn more about the onboard chip in its datasheet: [ESP-S3-WROOM1-N16R8](assets/datasheets/esp32s3wroom1.pdf).
 
 ### Input/Output
 
@@ -71,7 +71,7 @@ Besides sensors, the TinyML board also contains multiple Inputs and Outputs (I/O
 
 Below you see a systematic overview of all hardware present on the TinyML board. For detailed information about the circuit board, refer to the [Circuit board documentation]().
 
-![TinyML board systematic overview]()
+![TinyML board systematic overview](assets/images/tinyml-board-v21.png)
 
 ## Setup
 
@@ -80,12 +80,12 @@ The TinyML board requires relatively little setup. In order to start using it, c
 No drivers are required for the TinyML board. Sometimes, it is nescessary to know on which serial port the TinyML board is connected. To find this out, perform the following steps:
 
 **Windows**
-1. Open **Device Manager** by going to Start and searching for the program. (Alternatively, you can press the <kbd>![Windows Key][winlogo]</kbd> key and start searching)
+1. Open **Device Manager** by going to Start and searching for the program. (Alternatively, you can press the <kbd>![Windows Key](assets/images/winlogo.png)</kbd> key and start searching)
 2. Open the **Ports (COM & LPT)** section.
 3. Plug in the TinyML board and observe which COM port was added to this list.
 
 **Mac**
-1. Open the **Terminal** application by going to Applications>Utilities. (Alternatively, you can press the <kbd>![CMD Key][cmdlogo] + Spacebar</kbd> keys and search for Terminal)
+1. Open the **Terminal** application by going to Applications>Utilities. (Alternatively, you can press the <kbd>![CMD Key](assets/images/cmdlogo.png) + Spacebar</kbd> keys and search for Terminal)
 2. Enter the following command `ls /dev/tty*` and press <kbd>Enter</kbd>.
 3. Plug in the TinyML board and run the command again, observe which port was added to the list.
 
@@ -158,22 +158,22 @@ Additional (advanced) examples can be found in the [ESP32 Arduino library docume
 
 ### Sensor examples
 
-- Microphone [![Open In Github]()]()
-- Time-of-Flight sensor [![Open In Github]()]()
-- Environmental sensor [![Open In Github]()]()
-- Hall-effect magnetic sensor [![Open In Github]()]()
-- Inertial Measurement Unit (IMU) [![Open In Github]()]()
+- Microphone [![Open In Github](assets/images/github-badge.svg)]()
+- Time-of-Flight sensor [![Open In Github](assets/images/github-badge.svg)]()
+- Environmental sensor [![Open In Github](assets/images/github-badge.svg)]()
+- Hall-effect magnetic sensor [![Open In Github](assets/images/github-badge.svg)]()
+- Inertial Measurement Unit (IMU) [![Open In Github](assets/images/github-badge.svg)]()
 
 ### I/O examples
 
-- Buttons [![Open In Github]()]()
-- LED [![Open In Github]()]()
-- Neopixels [![Open In Github]()]()
-- Expansion header [![Open In Github]()]()
+- Buttons [![Open In Github](assets/images/github-badge.svg)]()
+- LED [![Open In Github](assets/images/github-badge.svg)]()
+- Neopixels [![Open In Github](assets/images/github-badge.svg)]()
+- Expansion header [![Open In Github](assets/images/github-badge.svg)]()
 
 ### TensorFlow Lite Micro examples
 
-- TensorFlow Lite Micro sine example [![Open In Github]()]()
+- TensorFlow Lite Micro sine example [![Open In Github](assets/images/github-badge.svg)]()
 
 ## License and Contact
 
