@@ -1,4 +1,4 @@
-# TinyML Board
+# TinyML Board Documentation
 
 ![Board version: 2.1](assets/images/version21.svg)
 
@@ -153,7 +153,7 @@ The onboard [Microphone](#sensors) uses the built-in I2S library from Espressif,
 In order to run TensorFlow models on the TinyML board, the TensorFlow Lite Micro library needs to be setup properly. 
 Included in this repository is a TensorFlow Lite Micro library specifically tailored to the ESP32 processor on the TinyML board.
 
-The library can be downloaded as ZIP from this repository: [![Download Arduino_TensorFlowLite_ESP32](assets/images/arduino-tflite-esp32-download.svg)](assets/arduino-tensorflowlite-esp32/Arduino_TensorFlowLite_ESP32.zip)
+The library can be downloaded as ZIP from this repository: [![Download Arduino_TensorFlowLite_ESP32](assets/images/arduino-tflite-esp32-download.svg)](/arduino-tensorflowlite-esp32/Arduino_TensorFlowLite_ESP32.zip)
 
 To install the library, follow the steps below:
 
@@ -167,8 +167,7 @@ To install the library, follow the steps below:
     <img src="assets/images/arduino-install-ziplibrary.png" alt="Install ZIP library in Arduino IDE">
 </div>
 
-A special thanks to [Nikos Kouvaris](https://github.com/nkoub) and [Tanaka Masayuki](https://github.com/tanakamasayuki) 
-for writing the [original Arduino_TensorFlowLite_ESP32 library](https://github.com/nkoub/Arduino_TensorFlowLite_ESP32)
+A special thanks to [Nikos Kouvaris](https://github.com/nkoub) and [Tanaka Masayuki](https://github.com/tanakamasayuki) for porting the [original Arduino_TensorFlowLite_ESP32 library](https://github.com/nkoub/Arduino_TensorFlowLite_ESP32)
 
 > [!IMPORTANT]
 > The TensorFlow Lite Micro ESP32 library included in this repository works with the TensorFlow Lite Micro release from Feb 2023.
