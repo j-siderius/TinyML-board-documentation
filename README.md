@@ -128,7 +128,7 @@ No drivers are required for the TinyML board. However, sometimes, it is nescessa
 2. Open the **Ports (COM & LPT)** section.
 3. Plug in the TinyML board and observe which COM port was added to this list.
 
-Mac*
+*Mac*
 1. Open the **Terminal** application by going to Applications>Utilities. (Alternatively, you can press the <kbd>![CMD Key](assets/images/cmdlogo.png) + Spacebar</kbd> keys and search for Terminal)
 2. Enter the following command `ls /dev/tty*` and press <kbd>Enter</kbd>.
 3. Plug in the TinyML board and run the command again, observe which port was added to the list.
@@ -136,6 +136,7 @@ Mac*
 ### Libraries
 
 In order to use the sensors on the TinyML board, some Arduino libraries are needed. These are listed below. 
+
 You can install the libraries through the Library Manager (Sketch>Include Library>Manage Libraries). The versions are included here for documentation purpose, the newest version of each library should work fine.
 
 - [Adafruit BME280](https://github.com/adafruit/Adafruit_BME280_Library) (2.2.4)
@@ -181,22 +182,22 @@ Additional (advanced) examples can be found in the [ESP32 Arduino library docume
 
 ### Sensor examples
 
-- Microphone [![Open In Github](assets/images/github-badge.svg)]()
-- Time-of-Flight sensor [![Open In Github](assets/images/github-badge.svg)]()
-- Environmental sensor [![Open In Github](assets/images/github-badge.svg)]()
-- Hall-effect magnetic sensor [![Open In Github](assets/images/github-badge.svg)]()
-- Inertial Measurement Unit (IMU) [![Open In Github](assets/images/github-badge.svg)]()
+- Microphone [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-microphone-example/)
+- Time-of-Flight sensor [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-tof-example/)
+- Environmental sensor [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-environmental-example/)
+- Hall-effect magnetic sensor [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-halleffect-example/)
+- Inertial Measurement Unit (IMU) [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-imu-example/)
 
 ### I/O examples
 
-- Buttons [![Open In Github](assets/images/github-badge.svg)]()
-- LED [![Open In Github](assets/images/github-badge.svg)]()
-- Neopixels [![Open In Github](assets/images/github-badge.svg)]()
-- Expansion header [![Open In Github](assets/images/github-badge.svg)]()
+- Buttons [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-buttons-example/)
+- LED [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-led-example/)
+- Neopixels [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-neopixel-example/)
+- Expansion header [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-expansion-example/)
 
 ### TensorFlow Lite Micro examples
 
-- TensorFlow Lite Micro sine example [![Open In Github](assets/images/github-badge.svg)]()
+- TensorFlow Lite Micro sine example [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-tensorflowlitemicro-example/)
 
 ## License and Contact
 
