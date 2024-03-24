@@ -17,6 +17,7 @@ software, setup, examples and more.
     - [Serial Port Setup](#serial-port-setup)
   - [Libraries](#libraries)
   - [TensorFlow Lite Micro library](#tensorflow-lite-micro-library)
+  - [Uploading code](#uploading-code)
 - [Code examples](#code-examples)
   - [Sensor examples](#sensor-examples)
   - [I/O examples](#io-examples)
@@ -72,10 +73,10 @@ Besides sensors, the TinyML board also contains multiple Inputs and Outputs (I/O
 
 ### Circuit Board
 
-Below you see a systematic overview of all hardware present on the TinyML board. For detailed information about the circuit board, refer to the [Circuit board documentation]().
+Below you see a systematic overview of all hardware present on the TinyML board. For detailed information about the circuit board, refer to the [Circuit board documentation](/pcb/README.md).
 
 <div align="center">
-    <img src="assets/images/tinyml-board-v21.png" alt="TinyML board">
+    <img src="https://placehold.co/640x640?text=Schematic+placeholder" alt="TinyML board">
 </div>
 
 ## Software
@@ -172,6 +173,14 @@ A special thanks to [Nikos Kouvaris](https://github.com/nkoub) and [Tanaka Masay
 > [!IMPORTANT]
 > The TensorFlow Lite Micro ESP32 library included in this repository works with the TensorFlow Lite Micro release from Feb 2023.
 > With much manual modifications, the library can be updated, however there is no compatibility guarantee as much of the TensorFlow Lite Micro codebase has changed without proper notice and documentation.
+
+### Uploading code
+
+To upload a program to the TinyML board, please follow the steps below:
+
+1. Connect the TinyML board to your system using a USB-C cable.
+2. Press the <kbd>Upload/Btn1</kbd> button. While holding the button, press and release the <kbd>RESET</kbd> button. This puts the ESP32S3 into *Download* mode.
+3. In the Arduino IDE, press the <kbd>Upload</kbd> button to compile and upload your program.
 
 ## Code examples
 
