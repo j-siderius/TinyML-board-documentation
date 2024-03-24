@@ -169,6 +169,8 @@ To install the library, follow the steps below:
     <img src="assets/images/arduino-install-ziplibrary.png" alt="Install ZIP library in Arduino IDE">
 </div>
 
+Not all normal TensorFlow Ops (layers) are supported by TensorFlow Lite Micro. In order to see what operations your TensorFlow model uses, you can upload your saved model to [Netron](https://netron.app/) and examine it. The supported operations in this version of TensorFlow Lite Micro can be found in the [Arduino-TensorFlowLite-ESP32 README](/arduino-tensorflowlite-esp32/README.md#supported-ops).
+
 A special thanks to [Nikos Kouvaris](https://github.com/nkoub) and [Tanaka Masayuki](https://github.com/tanakamasayuki) for porting the [original Arduino_TensorFlowLite_ESP32 library](https://github.com/nkoub/Arduino_TensorFlowLite_ESP32)
 
 > [!IMPORTANT]
