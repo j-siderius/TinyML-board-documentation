@@ -84,6 +84,7 @@ The following TensorFlow Operations are (likely) supported by this TensorFlow Li
 |Shape|
 |Sin|
 |Slice|
+|Softmax|
 |SpaceToBatchNd|
 |SpaceToDepth|
 |Split|
