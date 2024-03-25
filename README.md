@@ -25,7 +25,7 @@ software, setup, examples and more.
   - [Board tests](#board-tests)
 - [License and contact](#license-and-contact)
 
-## Hardware
+# Hardware
 
 The TinyML board contains several sensors and a powerfull processor to get you up and running with TinyML quickly. 
 In the following sections, a general overview as well as technical details on all hardware can be found.
@@ -35,7 +35,7 @@ In the following sections, a general overview as well as technical details on al
 </div>
 
 
-### Sensors
+## Sensors
 
 The TinyML board contains five different sensors that can be used for gathering data. To see how to use all sensors, see the [Code Examples](#code-examples).
 To see where all sensors are located, refer to the [Circuit Board](#circuit-board) section.
@@ -46,13 +46,13 @@ To see where all sensors are located, refer to the [Circuit Board](#circuit-boar
 - **Hall effect magnet sensor** [AH49E](assets/datasheets/ah49e.pdf) - This sensor measures the magnetic field around its axis.
 - **Inertial Measurement Unit (IMU)** [BMI270](assets/datasheets/bmi270.pdf) - This sensor measures both the angular motion using a gyroscope, as well as the acceleration using an accelerometer.
 
-### Processor
+## Processor
 
 The TinyML board is fitted with an ESP32-S3 SoC. The processor features a fast 240MHz, dual-core processor, large 16MB storage and 8MB RAM. 
 Additionally, it has Bluetooth 5 and WiFi capabilities, making it easy to connect your TinyML board to the internet, for example to share sensor data.
 You can learn more about the onboard chip in its datasheet: [ESP-S3-WROOM1-N16R8](assets/datasheets/esp32s3wroom1.pdf).
 
-### Input/Output
+## Input/Output
 
 Besides sensors, the TinyML board also contains multiple Inputs and Outputs (I/O). To see how to use all I/O, see the [Code Examples](#code-examples).
 
@@ -72,7 +72,7 @@ Besides sensors, the TinyML board also contains multiple Inputs and Outputs (I/O
 - **Miscellaneous** - The TinyML board also contains some other, miscellaneous component.
   These components are used to show power (LED ON), convert voltage, debug the TinyML board (Debugging header) and some other passive components.
 
-### Circuit Board
+## Circuit Board
 
 Below you see a systematic overview of all hardware present on the TinyML board. For detailed information about the circuit board, refer to the [Circuit board documentation](/pcb/README.md).
 
@@ -84,11 +84,11 @@ Below you see a systematic overview of all hardware present on the TinyML board.
     <img src="assets/images/tinyml-board-expansion-annotated.png" alt="TinyML board headers annotated">
 </div></div>
 
-## Software
+# Software
 
 In order to use the TinyML board, it needs to be correctly setup. The TinyML board requires no hardware setup. In order to start using it, connect a USB-C cable to the board and plug it into a free USB port on your system. Below sections detail the setup, through the software installation, sensor libraries and finally the TensorFlow Lite Micro setup.
 
-### Arduino
+## Arduino
 
 The TinyML board can be programmed using the [Arduino IDE](https://www.arduino.cc/en/software), both the new 2.x and Legacy >1.7.x versions.
 Please make sure that the Arduino IDE is installed on your system before continuing.
@@ -125,7 +125,7 @@ In order to use all functions that the ESP32S3 processor has, Arduino IDE must b
     <img src="assets/images/arduino-programming-settings.png" alt="Arduino Board settings">
 </div>
 
-#### Serial Port setup
+### Serial Port setup
 
 No drivers are required for the TinyML board. However, sometimes, it is nescessary to know on which serial port the TinyML board is connected. To find this out, perform the following steps:
 
@@ -139,7 +139,7 @@ No drivers are required for the TinyML board. However, sometimes, it is nescessa
 2. Enter the following command `ls /dev/tty*` and press <kbd>Enter</kbd>.
 3. Plug in the TinyML board and run the command again, observe which port was added to the list.
 
-### Libraries
+## Libraries
 
 In order to use the sensors on the TinyML board, some Arduino libraries are needed. These are listed below. 
 
@@ -154,7 +154,7 @@ The FastLED library can be replaced by any Neopixel library that supports [WS281
 
 The onboard [Microphone](#sensors) uses the built-in I2S library from Espressif, you can find more information in their [I2S Peripherals documentation](https://docs.espressif.com/projects/esp-idf/en/v3.3/api-reference/peripherals/i2s.html).
 
-### TensorFlow Lite Micro library
+## TensorFlow Lite Micro library
 
 In order to run TensorFlow models on the TinyML board, the TensorFlow Lite Micro library needs to be setup properly. 
 Included in this repository is a TensorFlow Lite Micro library specifically tailored to the ESP32 processor on the TinyML board.
@@ -181,7 +181,7 @@ A special thanks to [Nikos Kouvaris](https://github.com/nkoub) and [Tanaka Masay
 > The TensorFlow Lite Micro ESP32 library included in this repository works with the TensorFlow Lite Micro release from Feb 2023.
 > With much manual modifications, the library can be updated, however there is no compatibility guarantee as much of the TensorFlow Lite Micro codebase has changed without proper notice and documentation.
 
-### Uploading code
+## Uploading code
 
 To upload a program to the TinyML board, please follow the steps below:
 
@@ -189,7 +189,7 @@ To upload a program to the TinyML board, please follow the steps below:
 2. Press the <kbd>Upload/Btn1</kbd> button. While holding the button, press and release the <kbd>RESET</kbd> button. This puts the ESP32S3 into *Download* mode.
 3. In the Arduino IDE, press the <kbd>Upload</kbd> button to compile and upload your program.
 
-## Code examples
+# Code examples
 
 Example code for all described functions of the TinyML board can be found below. They are divided into sensors, I/O and TensorFlow Lite Micro examples.
 
@@ -197,7 +197,7 @@ The TinyML board usually comes pre-programmed with a Board Test firmware. This p
 
 Additional (advanced) examples can be found in the [ESP32 Arduino library documentation](https://docs.espressif.com/projects/arduino-esp32/en/latest/libraries.html).
 
-### Sensor examples
+## Sensor examples
 
 - Microphone [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-microphone-example/)
 - Time-of-Flight sensor [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-tof-example/)
@@ -205,22 +205,22 @@ Additional (advanced) examples can be found in the [ESP32 Arduino library docume
 - Hall-effect magnetic sensor [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-halleffect-example/)
 - Inertial Measurement Unit (IMU) [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-imu-example/)
 
-### I/O examples
+## I/O examples
 
 - Buttons [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-buttons-example/)
 - LED [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-led-example/)
 - Neopixels [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-neopixel-example/)
 - Expansion header [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-expansion-example/)
 
-### TensorFlow Lite Micro examples
+## TensorFlow Lite Micro examples
 
 - TensorFlow Lite Micro sine example [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-tensorflowlitemicro-example/)
 
-### Board tests
+## Board tests
 
 - TinyML Board Test [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-tests/)
 
-## License and Contact
+# License and Contact
 
 <span style="color:red">**TODO:**</span> License information here
 
