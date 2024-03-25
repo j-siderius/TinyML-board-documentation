@@ -77,8 +77,12 @@ Besides sensors, the TinyML board also contains multiple Inputs and Outputs (I/O
 Below you see a systematic overview of all hardware present on the TinyML board. For detailed information about the circuit board, refer to the [Circuit board documentation](/pcb/README.md).
 
 <div align="center">
-    <img src="https://placehold.co/640x640?text=Schematic+placeholder" alt="TinyML board">
+    <img src="assets/images/tinyml-board-annotated.png" alt="TinyML board annotated">
 </div>
+
+<div align="center">
+    <img src="assets/images/tinyml-board-expansion-annotated.png" alt="TinyML board headers annotated">
+</div></div>
 
 ## Software
 
