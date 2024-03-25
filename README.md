@@ -186,8 +186,9 @@ A special thanks to [Nikos Kouvaris](https://github.com/nkoub) and [Tanaka Masay
 To upload a program to the TinyML board, please follow the steps below:
 
 1. Connect the TinyML board to your system using a USB-C cable.
-2. Press the <kbd>Upload/Btn1</kbd> button. While holding the button, press and release the <kbd>RESET</kbd> button. This puts the ESP32S3 into *Download* mode.
-3. In the Arduino IDE, press the <kbd>Upload</kbd> button to compile and upload your program.
+2. Ensure that the Upload settings are setup as described in the [Arduino](#arduino) section!
+3. Press the <kbd>Upload/Btn1</kbd> button. While holding the button, press and release the <kbd>RESET</kbd> button. This puts the ESP32S3 into *Download* mode.
+4. In the Arduino IDE, press the <kbd>Upload</kbd> button to compile and upload your program.
 
 # Code examples
 
