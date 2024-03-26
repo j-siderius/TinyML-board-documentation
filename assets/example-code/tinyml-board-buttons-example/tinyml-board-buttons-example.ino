@@ -1,4 +1,4 @@
-#define pin_button1 
+#define pin_button1 0
 #define pin_button2 47
 
 void setup() {
