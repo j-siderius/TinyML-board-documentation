@@ -13,7 +13,7 @@ uint8_t i2cAddress = BMI2_I2C_SEC_ADDR; // 0x69
 void setup()
 {
     // Start serial
-    Serial.begin(115200);
+    Serial.begin(9600);
 
     // Initialize the I2C library
     Wire.begin();
