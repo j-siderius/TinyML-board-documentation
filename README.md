@@ -118,6 +118,7 @@ In order to use all functions that the ESP32S3 processor has, Arduino IDE must b
 - **Board** - *ESP32S3 Dev Module*: This sets the correct processor and board configuration for the TinyML board. To select the ESP32 Dev Module, first select the *esp* platform.
 - **Port** - *port here*: Enter the serial port of the TinyML board here. Refer to the guide [Serial Port](#serial-port-setup) to find this port.
 - **USB CDC On Boot** - *Enabled*: This setting enables the onboard USB-C port to be used for serial communication.
+- **Flash mode** - *DIO 80MHz*: This setting configures the correct mode for writing to the flash of the ESP32S3.
 - **Flash Size** - *16MB (128Mb)*: This setting uses the full storage of the ESP32S3, enabling space for larger projects and more code.
 - **PSRAM** - *OPI PSRAM*: This setting enables the fast built-in RAM of the ESP32S3.
 
