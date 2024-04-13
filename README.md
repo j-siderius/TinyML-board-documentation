@@ -219,6 +219,7 @@ Additional (advanced) examples can be found in the [ESP32 Arduino library docume
 ## TensorFlow Lite Micro examples
 
 - TensorFlow Lite Micro sine example [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-tensorflowlitemicro-example/)
+- TensorFlow Lite Micro LSTM example [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-tensorflowlitemicro-lstm/)
 
 ## Board tests
 
