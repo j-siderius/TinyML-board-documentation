@@ -3,7 +3,6 @@
 ![Board version: 2.1](assets/images/version21.svg)
 
 The TinyML board is a development board specifically tailored to the exploration of TinyML concepts and to test possible applications of TinyML in an easy way. It features a powerfull microcontroller as well as a suite of sensors to sense the environment. Combined with a special TensorFlow Lite Micro library, it is easy to use this devide and start deploying machine learning models to the Edge.
-<!-- This repository documents the functionality and usage of the TinyML Board. Use the contents header below to navigate to information about the hardware, software, setup, examples and more. -->
 
 <div align="center">
     <img src="assets/images/tinyml-board-v21.png" alt="TinyML board" width="50%" height="auto" alt="Closeup of the TinyML board, showing the top side of the circuitboard.">
@@ -188,30 +187,130 @@ The onboard [Microphone](#sensors) uses the built-in I2S library from Espressif,
 
 ### TensorFlow Lite Micro library
 
-<span style="color:red">**TODO:**</span> Add new library references here
-
-<!-- In order to run TensorFlow models on the TinyML board, the TensorFlow Lite Micro library needs to be setup properly. 
-Included in this repository is a TensorFlow Lite Micro library specifically tailored to the ESP32 processor on the TinyML board.
-
-The library can be downloaded as ZIP from this repository: [![Download Arduino_TensorFlowLite_ESP32](assets/images/arduino-tflite-esp32-download.svg)](/arduino-tensorflowlite-esp32/Arduino_TensorFlowLite_ESP32.zip)
-
-To install the library, follow the steps below:
-
-1. Download the library ZIP file from the link above.
-2. Open the Arduino IDE and navigate to the **Include Library** menu. (Windows + Mac: Sketch>Include Library)
-3. Click on <kbd>Add .ZIP Library...</kbd>.
-4. In the file window that opens, navigate to the location where the ZIP file was downloaded.
-5. Select the ZIP file and click <kbd>Open</kbd>. Wait for the Installation to finish.
-
-<div align="center">
-    <img src="assets/images/arduino-install-ziplibrary.png" alt="Install ZIP library in Arduino IDE">
-</div>
-
-Not all normal TensorFlow Ops (layers) are supported by TensorFlow Lite Micro. In order to see what operations the TensorFlow model uses, you can upload your saved model to [Netron](https://netron.app/) and examine it. The supported operations in this version of TensorFlow Lite Micro can be found in the [Arduino-TensorFlowLite-ESP32 README](/arduino-tensorflowlite-esp32/README.md#supported-ops).
-
-A special thanks to [Nikos Kouvaris](https://github.com/nkoub) and [Tanaka Masayuki](https://github.com/tanakamasayuki) for porting the [original Arduino_TensorFlowLite_ESP32 library](https://github.com/nkoub/Arduino_TensorFlowLite_ESP32)
+In order to run TensorFlow Lite Micro models on the TinyML board, the [TFLiteMicro_ArduinoESP32S3](https://github.com/j-siderius/TFLiteMicro_ArduinoESP32S3) library needs to be installed. Download the libary from its homepage and install it in the Arduino IDE by using the Library Manager (Sketch > Include Library > Add .ZIP Library). More information on installing ZIP-libraries on Arduino can be found on the [Arduino website](https://docs.arduino.cc/software/ide-v1/tutorials/installing-libraries/#importing-a-zip-library).
 
 > [!IMPORTANT]
+> Be aware that not all TensorFlow (Keras) layers are supported by TensorFlow Lite Micro. Some layers may also have a different name in TensorFlow Lite Micro, compared to their name in TensorFlow (Keras), for example the `LSTM` layer is called `UnidirectionalSequenceLSTM`.
+> 
+> <details><summary>Supported layers</summary>
+> Abs
+> Add
+> AddN
+> ArgMax
+> ArgMin
+> AssignVariable
+> AveragePool2D
+> BatchMatMul
+> BatchToSpaceNd
+> BroadcastArgs
+> BroadcastTo
+> CallOnce
+> Cast
+> Ceil
+> CircularBuffer
+> Concatenation
+> Conv2D
+> Cos
+> CumSum
+> Delay
+> DepthToSpace
+> DepthwiseConv2D
+> Dequantize
+> DetectionPostprocess
+> Div
+> EmbeddingLookup
+> Energy
+> Elu
+> Equal
+> EthosU
+> Exp
+> ExpandDims
+> FftAutoScale
+> Fill
+> FilterBank
+> FilterBankLog
+> FilterBankSquareRoot
+> FilterBankSpectralSubtraction
+> Floor
+> FloorDiv
+> FloorMod
+> Framer
+> FullyConnected
+> Gather
+> GatherNd
+> Greater
+> GreaterEqual
+> HardSwish
+> If
+> Irfft
+> L2Normalization
+> L2Pool2D
+> LeakyRelu
+> Less
+> LessEqual
+> Log
+> LogicalAnd
+> LogicalNot
+> LogicalOr
+> Logistic
+> LogSoftmax
+> Maximum
+> MaxPool2D
+> MirrorPad
+> Mean
+> Minimum
+> Mul
+> Neg
+> NotEqual
+> OverlapAdd
+> Pack
+> Pad
+> PadV2
+> PCAN
+> Prelu
+> Quantize
+> ReadVariable
+> ReduceMax
+> Relu
+> Relu6
+> Reshape
+> ResizeBilinear
+> ResizeNearestNeighbor
+> Rfft
+> Round
+> Rsqrt
+> SelectV2
+> Shape
+> Sin
+> Slice
+> Softmax
+> SpaceToBatchNd
+> SpaceToDepth
+> Split
+> SplitV
+> Squeeze
+> Sqrt
+> Square
+> SquaredDifference
+> StridedSlice
+> Stacker
+> Sub
+> Sum
+> Svdf
+> Tanh
+> TransposeConv
+> Transpose
+> Unpack
+> UnidirectionalSequenceLSTM
+> VarHandle
+> While
+> Window
+> ZerosLike
+> </details>
+
+<!-- Not all normal TensorFlow Ops (layers) are supported by TensorFlow Lite Micro. In order to see what operations the TensorFlow model uses, you can upload your saved model to [Netron](https://netron.app/) and examine it. The supported operations in this version of TensorFlow Lite Micro can be found in the [Arduino-TensorFlowLite-ESP32 README](/arduino-tensorflowlite-esp32/README.md#supported-ops). -->
+
+<!-- > [!IMPORTANT]
 > The TensorFlow Lite Micro ESP32 library included in this repository works with the TensorFlow Lite Micro release from Feb 2023.
 > With much manual modifications, the library can be updated, however there is no compatibility guarantee as much of the TensorFlow Lite Micro codebase has changed without proper notice and documentation. -->
 
@@ -256,7 +355,7 @@ Additional (advanced) examples can be found in the [ESP32 Arduino library docume
 
 ### TensorFlow Lite Micro examples
 
-<span style="color:red">**TODO:**</span> New library examples here
+Please find all TensorFlow Lite Micro examples in the TFLiteMicro_ArduinoESP32S3 library repository: [TFLiteMicro_ArduinoESP32S3 examples](https://github.com/j-siderius/TFLiteMicro_ArduinoESP32S3/#examples).
 
 <!-- - TensorFlow Lite Micro sine example [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-tensorflowlitemicro-example/) -->
 <!-- - TensorFlow Lite Micro LSTM example [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-tensorflowlitemicro-lstm/) -->
