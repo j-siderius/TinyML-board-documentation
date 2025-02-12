@@ -52,7 +52,7 @@ The TinyML board contains several sensors and a powerfull processor to get up an
 
 ### Sensors
 
-The TinyML board contains five different sensors that can be used for gathering data. To see how to use the sensors, look at the [Code Examples](#code-examples).
+The TinyML board contains five different sensors that can be used for gathering data. To see how to use the sensors, look at the [Code Examples](#code-examples). For detailed information about the circuit board, refer to the [Circuit board documentation](/pcb/README.md).
 
 - **Microphone (I2S)** [_ICS-43434_](assets/datasheets/ics43434.pdf) - This sensor measures the amplitude and pitch of sound.
 - **Time-of-Flight range sensor** [_VL53L0X_](assets/datasheets/vl53l0x.pdf) - This sensor measures short-range distance.
@@ -98,8 +98,6 @@ Below a systematic overview of all expansion headers present on the TinyML board
 | D4 / GPIO13 | SPI MISO |
 
 The TinyML board can technically be powered through the Expansion Header, but the power should be stable and noise-free **3.3V** only. If the external power is fluctuating, the microcontroller could be damaged. If it is absolutely nescessary to provide variable external power from another source than USB-C (e.g. from a battery), it is possible to utilise the testpoints GND and VUSB close to the USB-C connector on the board. The VUSB testpoint routes the power through the on-board voltage regulator first, which produces clean 3.3V.
-
-For detailed information about the circuit board, refer to the [Circuit board documentation](/pcb/README.md).
 
 <div align="center">
     <img src="assets/images/tinyml-board-expansion-annotated.png" alt="TinyML board headers annotated">
@@ -359,14 +357,30 @@ Please find all TensorFlow Lite Micro examples in the TFLiteMicro_ArduinoESP32S3
 
 - TinyML Board Test [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-tests/)
 
+[🔼 Back to the top](#tinyml-board-documentation)
+
 ## Frequently Encountered Issues
 
-$\color{red}{\textsf{TODO:}}$ Explain frequently encountered issues here
+#### The TinyML board serial port does not appear in Arduino IDE when connected
 
-- Cannot see TinyML board serial port > USB-C data cable
-- Cannot set ESP32 settings > install ESP32 board definitions
-- Cannot upload code to the TinyML board > download mode
-- Serial exception occured > ? upload completes, but need to RESET for longer time
+Make sure to use a USC-C _Data_ cable, since the TinyML board can only communicate with the system when it has both power and data connections. Some cheaper cables only provide power wires.
+
+#### The ESP32S3 Dev Module cannot be selected as board in Arduino IDE
+
+Make sure to have the ESP32 platform installed in the Arduino IDE. Refer to the [Software - Arduino IDE](#arduino-ide) section for a guide how to do this.
+
+#### It is not possible to upload code to the TinyML board
+
+When getting a `Failed to connect to ESP32-S3` error in Arduino IDE, it is possible that the TinyML board was not in Upload mode. To get the TinyML board in this mode, follow the [Uploading code](#uploading-code) section. Alternatively, update the Arduino IDE to the latest version (2.3.4 at time of writing) and update the ESP32 platform to the latest version (3.1.1 at time of writing); the upload process will now be automated.
+
+#### The serial upload fails
+
+When getting an `A serial exception error occurred` error in Arduino IDE, there are multiple possibilities:
+- If the writing and verification of bytes was successful, check if the Arduino code works as expected, usually the code was uploaded correctly, but the programmer fails after the restart.
+- If the writing was not successful, follow the troubleshooting steps on the [Espressif Esptool website](https://docs.espressif.com/projects/esptool/en/latest/esp32/troubleshooting.html).
+
+$\color{red}{\textsf{TODO:}}$ Explain frequently encountered issues
+
 - Compiling code fails library > missing library
 - Compiling code fails size > reduce size e.g. bytearrays
 - Compiling code fails unsupported ops > check ops using TFLite checker
@@ -374,6 +388,7 @@ $\color{red}{\textsf{TODO:}}$ Explain frequently encountered issues here
 - Crashing output after upload > check code errors
 - No sensor output / failing sensor init > check i2c addresses
 - No button presses > enable pull-ups
+- Brownout detection > change power supply
 
 [🔼 Back to the top](#tinyml-board-documentation)
 

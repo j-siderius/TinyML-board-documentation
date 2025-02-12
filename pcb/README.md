@@ -46,4 +46,4 @@ The sensors are connected with the following I2C addresses:
 
 <br>
 
-**&copy; J Siderius 2024**
+&copy; Jannick Siderius
