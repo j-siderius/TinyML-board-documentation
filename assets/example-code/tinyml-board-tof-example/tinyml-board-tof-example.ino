@@ -1,39 +1,28 @@
-#include "Adafruit_VL53L0X.h"
+#include <Wire.h>
+#include <VL53L0X.h>
 
-#define pin_i2c_sda 8
-#define pin_i2c_scl 9
+VL53L0X vl53Sensor;
 
-Adafruit_VL53L0X lox = Adafruit_VL53L0X();
-
-void setup() {
+void setup()
+{
   Serial.begin(115200);
+  Serial.println("VL53L0X test");
 
-  // wait until serial port opens for native USB devices
-  while (! Serial) {
-    delay(1);
+  Wire.begin();
+
+  vl53Sensor.setTimeout(500);
+  if (!vl53Sensor.init()) {
+    Serial.println("Error: Could not find a VL53L0X sensor!");
+    while (1);
   }
-  
-  Serial.println("Adafruit VL53L0X test");
-  if (!lox.begin()) {
-    Serial.println(F("Failed to boot VL53L0X"));
-    while(1);
-  }
-  // power 
-  Serial.println(F("VL53L0X API Simple Ranging example\n\n")); 
+
+  vl53Sensor.startContinuous();  // Start continuous back-to-back mode
 }
 
+void loop()
+{
+  Serial.print(vl53Sensor.readRangeContinuousMillimeters());
+  Serial.println(" mm");
 
-void loop() {
-  VL53L0X_RangingMeasurementData_t measure;
-    
-  Serial.print("Reading a measurement... ");
-  lox.rangingTest(&measure, false); // pass in 'true' to get debug data printout!
-
-  if (measure.RangeStatus != 4) {  // phase failures have incorrect data
-    Serial.print("Distance (mm): "); Serial.println(measure.RangeMilliMeter);
-  } else {
-    Serial.println(" out of range ");
-  }
-    
-  delay(100);
+  delay(50);
 }

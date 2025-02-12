@@ -11,7 +11,7 @@
 int analogOutput = 0;
 
 void setup() {
-    Serial.begin(9600);
+    Serial.begin(115200);
 
     pinMode(pin_analog1, INPUT);
     pinMode(pin_analog2, INPUT);

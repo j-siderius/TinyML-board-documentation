@@ -1,8 +1,8 @@
+
 #include <Wire.h>
 #include <SPI.h>
-#include <Adafruit_Sensor.h>
-#include <Adafruit_BME280.h>
-#include "Adafruit_VL53L0X.h"
+#include <VL53L0X.h>
+#include <SparkFunBME280.h>
 #include "SparkFun_BMI270_Arduino_Library.h"
 #include <FastLED.h>
 #include <driver/i2s.h>
@@ -27,13 +27,12 @@
 #define pin_imu_wake 21
 #define pin_button2 47
 
-Adafruit_BME280 bme;  // I2C
-Adafruit_VL53L0X lox = Adafruit_VL53L0X();
-BMI270 imu;
-// uint8_t i2cAddress = BMI2_I2C_PRIM_ADDR;  // 0x68
-uint8_t i2cAddress = BMI2_I2C_SEC_ADDR;  // 0x69
+BME280 envSensor;
+VL53L0X vl53Sensor;
+BMI270 imuSensor;
 #define NUM_LEDS 5
 CRGB leds[NUM_LEDS];
+
 #define SAMPLE_BUFFER_SIZE 512
 #define SAMPLE_RATE 8000
 #define I2S_MIC_CHANNEL I2S_CHANNEL_FMT_ONLY_LEFT
@@ -58,10 +57,12 @@ i2s_pin_config_t i2s_mic_pins = {
 };
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   while (!Serial)
     ;
-  delay(2000);
+  Wire.begin();
+
+  delay(500);
   Serial.println();
   Serial.println();
   Serial.println("############################");
@@ -77,7 +78,7 @@ void setup() {
   Serial.println("#  '***'.                  #");
   Serial.println("############################");
   Serial.println();
-  delay(500);
+  delay(1500);
   Serial.println("*** To Start, press ENTER");
   while (Serial.read() != '\n')
     ;
@@ -101,13 +102,15 @@ void setup() {
   // ---------- BME280 ----------
   Serial.println();
   Serial.println("BME280 Test");
-  // status = bme.begin();
-  unsigned status = bme.begin(0x76, &Wire);
-  if (!status) {
+
+  envSensor.setI2CAddress(0x76);  // Define I2C address
+  if (envSensor.beginI2C() == false) {
     Serial.println("Error: Could not find a BME280 sensor!");
+    while (1)
+      ;
   } else {
     char buffer[100];
-    sprintf(buffer, "Temperature: %f C\nPressure: %f hPa\nHumidity: %f%%", bme.readTemperature(), bme.readPressure() / 100.0F, bme.readHumidity());
+    sprintf(buffer, "Temperature: %f °C\nPressure: %f hPa\nHumidity: %f%%", envSensor.readTempC(), envSensor.readFloatPressure() / 100.0F, envSensor.readFloatHumidity());
     Serial.println(buffer);
 
     Serial.println("*** Check if temperature, pressure and humidity are reasonable values");
@@ -119,9 +122,14 @@ void setup() {
   // ---------- VL53L0X ----------
   Serial.println();
   Serial.println("VL53L0X Test");
-  if (!lox.begin()) {
-    Serial.println("Error: Could not find VL53L0X!");
+  vl53Sensor.setTimeout(500);
+  if (!vl53Sensor.init()) {
+    Serial.println("Error: Could not find a VL53L0X sensor!");
+    while (1)
+      ;
   } else {
+    vl53Sensor.startContinuous();
+
     Serial.println("*** Check if different distances are detected");
     Serial.println("*** To Start, press ENTER");
     Serial.println("*** Press ENTER again to quit this test");
@@ -129,22 +137,18 @@ void setup() {
       ;
     while (Serial.read() != '\n') {
       delay(100);
-      VL53L0X_RangingMeasurementData_t measure;
-      lox.rangingTest(&measure, false);
-      if (measure.RangeStatus != 4) {  // phase failures have incorrect data
-        Serial.print(measure.RangeMilliMeter);
-        Serial.println(" mm");
-      } else {
-        Serial.println(" out of range, move closer ");
-      }
+      Serial.print(vl53Sensor.readRangeContinuousMillimeters());
+      Serial.println(" mm");
     }
   }
 
   // ---------- BMI270 ----------
   Serial.println();
   Serial.println("BMI270 Test");
-  if (imu.beginI2C(i2cAddress) != BMI2_OK) {
+  if (imuSensor.beginI2C(0x69) != BMI2_OK) {
     Serial.println("Error: Could not find BMI270!");
+    while (1)
+      ;
   } else {
     Serial.println("*** Check if movements are detected (these are represented by changes in acceleration (A) and rotation (G))");
     Serial.println("*** To Start, press ENTER");
@@ -153,9 +157,9 @@ void setup() {
       ;
     while (Serial.read() != '\n') {
       delay(100);
-      imu.getSensorData();
+      imuSensor.getSensorData();
       char buffer[150];
-      sprintf(buffer, "AccX: %f, AccY: %f, AccZ: %f, GyrX: %f, GyrY: %f, GyrZ: %f", imu.data.accelX, imu.data.accelY, imu.data.accelZ, imu.data.gyroX, imu.data.gyroY, imu.data.gyroZ);
+      sprintf(buffer, "AccX: %f, AccY: %f, AccZ: %f, GyrX: %f, GyrY: %f, GyrZ: %f", imuSensor.data.accelX, imuSensor.data.accelY, imuSensor.data.accelZ, imuSensor.data.gyroX, imuSensor.data.gyroY, imuSensor.data.gyroZ);
       Serial.println(buffer);
     }
   }
@@ -194,9 +198,12 @@ void setup() {
   while (Serial.read() != '\n')
     ;
   pinMode(pin_led, OUTPUT);
-  digitalWrite(pin_led, HIGH);
-  delay(1000);
-  digitalWrite(pin_led, LOW);
+  for (int leds = 0; leds < 5; leds++) {
+    digitalWrite(pin_led, HIGH);
+    delay(1000);
+    digitalWrite(pin_led, LOW);
+    delay(1000);
+  }
 
   // ---------- Buttons ----------
   Serial.println();
@@ -248,6 +255,7 @@ void setup() {
   Serial.println("Microphone Test");
   Serial.println("*** Check if changes output are detected after noise (numbers should be larger both in positive and negative)");
   Serial.println("*** If you want to check if there are noise-waves, open the Serial Plotter");
+  Serial.println("*** If you whistle there should be a visible sine-wave in the Serial Plotter");
   Serial.println("*** To Start, press ENTER");
   Serial.println("*** Press ENTER again to quit this test");
   while (Serial.read() != '\n')

@@ -8,7 +8,7 @@
 #define pin_i2s_ws 6
 #define pin_i2s_sck 7
 
-// don't mess around with this
+// don't change these default settings
 i2s_config_t i2s_config = {
     .mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_RX),
     .sample_rate = SAMPLE_RATE,
@@ -22,7 +22,7 @@ i2s_config_t i2s_config = {
     .tx_desc_auto_clear = false,
     .fixed_mclk = 0};
 
-// and don't mess around with this
+// and don't change these pin assignments
 i2s_pin_config_t i2s_mic_pins = {
     .bck_io_num = pin_i2s_sck,
     .ws_io_num = pin_i2s_ws,
@@ -31,8 +31,8 @@ i2s_pin_config_t i2s_mic_pins = {
 
 void setup()
 {
-  // we need serial output for the plotter
   Serial.begin(115200);
+  
   // start up the I2S peripheral
   i2s_driver_install(I2S_NUM_0, &i2s_config, 0, NULL);
   i2s_set_pin(I2S_NUM_0, &i2s_mic_pins);

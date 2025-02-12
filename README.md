@@ -338,13 +338,11 @@ Additional (advanced) examples can be found in the [ESP32 Arduino library docume
 
 ### Sensor examples
 
-<span style="color:red">**TODO:**</span> New library examples here
-
 - Microphone [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-microphone-example/)
-<!-- - Time-of-Flight sensor [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-tof-example/) -->
-<!-- - Environmental sensor [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-environmental-example/) -->
+- Time-of-Flight sensor [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-tof-example/)
+- Environmental sensor [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-environmental-example/)
 - Hall-effect magnetic sensor [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-halleffect-example/)
-<!-- - Inertial Measurement Unit (IMU) [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-imu-example/) -->
+- Inertial Measurement Unit (IMU) [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-imu-example/)
 
 ### I/O examples
 
@@ -357,22 +355,18 @@ Additional (advanced) examples can be found in the [ESP32 Arduino library docume
 
 Please find all TensorFlow Lite Micro examples in the TFLiteMicro_ArduinoESP32S3 library repository: [TFLiteMicro_ArduinoESP32S3 examples](https://github.com/j-siderius/TFLiteMicro_ArduinoESP32S3/#examples).
 
-<!-- - TensorFlow Lite Micro sine example [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-tensorflowlitemicro-example/) -->
-<!-- - TensorFlow Lite Micro LSTM example [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-tensorflowlitemicro-lstm/) -->
-
 ### Board tests
-
-<span style="color:red">**TODO:**</span> Fix library dependencies
 
 - TinyML Board Test [![Open In Github](assets/images/github-badge.svg)](/assets/example-code/tinyml-board-tests/)
 
 ## Frequently Encountered Issues
 
-<span style="color:red">**TODO:**</span> Explain frequently encountered issues here
+$\color{red}{\textsf{TODO:}}$ Explain frequently encountered issues here
 
 - Cannot see TinyML board serial port > USB-C data cable
 - Cannot set ESP32 settings > install ESP32 board definitions
 - Cannot upload code to the TinyML board > download mode
+- Serial exception occured > ? upload completes, but need to RESET for longer time
 - Compiling code fails library > missing library
 - Compiling code fails size > reduce size e.g. bytearrays
 - Compiling code fails unsupported ops > check ops using TFLite checker
@@ -385,7 +379,7 @@ Please find all TensorFlow Lite Micro examples in the TFLiteMicro_ArduinoESP32S3
 
 ## License
 
-<span style="color:red">**TODO:**</span> Add license information here
+$\color{red}{\textsf{TODO:}}$ Add license information here
 
 <br>
 

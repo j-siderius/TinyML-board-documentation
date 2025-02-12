@@ -2,7 +2,7 @@
 #define pin_button2 47
 
 void setup() {
-    Serial.begin(9600);
+    Serial.begin(115200);
 
     Serial.println("Button Test");
     pinMode(pin_button1, INPUT_PULLUP);

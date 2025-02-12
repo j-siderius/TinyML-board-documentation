@@ -1,7 +1,7 @@
 #define pin_hall_eff 10
 
 void setup() {
-    Serial.begin(9600);
+    Serial.begin(115200);
     Serial.println("Hall Effect Test");
     
     pinMode(pin_hall_eff, INPUT);
