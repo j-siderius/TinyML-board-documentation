@@ -316,7 +316,7 @@ In order to run TensorFlow Lite Micro models on the TinyML board, the [TFLiteMic
 
 To upload a program to the TinyML board, follow the steps below:
 
-1. Connect the TinyML board to the system using a USB-C cable.
+1. Connect the TinyML board to the system using a USB-C _Data_ cable.
 2. Ensure that the IDE settings are setup as described in the [Arduino IDE](#arduino-ide) and [IDE configuration](#ide-configuration) sections.
 3. Select the correct serial port for the TinyML board, as described in the [Serial Port setup](#serial-port-setup) section.
 4. Press and hold the `Upload/Btn1` button, then press the `RESET` button. This puts the ESP32S3 into *Upload*\* mode.
@@ -371,7 +371,8 @@ Make sure to have the ESP32 platform installed in the Arduino IDE. Refer to the 
 
 #### It is not possible to upload code to the TinyML board
 
-When getting a `Failed to connect to ESP32-S3` error in Arduino IDE, it is possible that the TinyML board was not in Upload mode. To get the TinyML board in this mode, follow the [Uploading code](#uploading-code) section. Alternatively, update the Arduino IDE to the latest version (2.3.4 at time of writing) and update the ESP32 platform to the latest version (3.1.1 at time of writing); the upload process will now be automated.
+When getting a `Failed to connect to ESP32-S3` error in Arduino IDE, it is possible that the TinyML board was not in Upload mode. To get the TinyML board in this mode, follow the [Uploading code](#uploading-code) section. 
+<!-- Alternatively, update the Arduino IDE to the latest version (2.3.4 as of February 2025) and update the ESP32 platform to the latest version (3.1.1 as of February 2025); the upload process will now be automated. -->
 
 #### The serial upload fails
 
@@ -379,16 +380,53 @@ When getting an `A serial exception error occurred` error in Arduino IDE, there 
 - If the writing and verification of bytes was successful, check if the Arduino code works as expected, usually the code was uploaded correctly, but the programmer fails after the restart.
 - If the writing was not successful, follow the troubleshooting steps on the [Espressif Esptool website](https://docs.espressif.com/projects/esptool/en/latest/esp32/troubleshooting.html).
 
-$\color{red}{\textsf{TODO:}}$ Explain frequently encountered issues
+#### Missing library in Arduino IDE
 
-- Compiling code fails library > missing library
-- Compiling code fails size > reduce size e.g. bytearrays
-- Compiling code fails unsupported ops > check ops using TFLite checker
-- No output after upload > USB CDC + port
-- Crashing output after upload > check code errors
-- No sensor output / failing sensor init > check i2c addresses
-- No button presses > enable pull-ups
-- Brownout detection > change power supply
+When getting an `Fatal error: <library_name>.h: No such file or directory` error in Arduino IDE, it is likely that the software library required for the code is not installed. Follow the [Arduino libraries](#arduino-libraries) section to install all required libraries.
+
+#### Arduino sketch too large
+
+When getting an `Sketch too big` error, the storage of the TinyML board was exceeded. First, make sure that Arduino utilises the whole onboard Flash memory by checking the [IDE configuration](#ide-configuration). If the code is still too large, decrease the Arduino sketch size:
+- Reduce the size of bytearrays included in the code (e.g. storing images).
+- Reduce the size of the TensorFlow Lite Micro model by tweaking the TensorFlow model (e.g. by condensing or removing layers).
+- Reduce the amount of libraries that are included in the Arduino sketch, especially if they are unused.
+
+#### Code contains unsupported operators
+
+When getting an `Encountered ERROR: TFLite operator with code <code_here> is unsupported` error, an operator or layer that is not supported by TFLite Micro was present in the code. When making the TensorFlow model that will be utilised on the TinyML board, make sure to only use the supported layers. These are described in the [TensorFlow Lite Micro library](#tensorflow-lite-micro-library) section.
+
+#### The TinyML board does not print any output to the Serial Monitor
+
+If no output is found on the Serial Monitor in Arduino IDE, the USB CDC option is probably misconfigured. Refer to the [IDE configuration](#ide-configuration) section to setup the *USB CDC on Boot* option correctly.
+
+If the Serial Monitor in Arduino IDE only displays garbage output, make sure that the correct baudrate is set up. The default baudrate for the [Code examples](#code-examples) is `115200`. Refer to the [Arduino Serial Monitor](https://docs.arduino.cc/software/ide-v2/tutorials/ide-v2-serial-monitor/#using-the-serial-monitor-tool) guide to configure the Serial Monitor.
+
+#### TinyML board keeps crashing after uploading code
+
+When getting a looping error `rst:0x10  (RTCWDT_RTC_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)`, `rst:0x3 (SW_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)` or `rst:0x1  (POWON),boot:0xd (SPI_FAST_FLASH_BOOT)`, this means that the TinyML board is stuck in a boot loop. Usually this problem is caused by a fault, overload or memory corruption problem in the code, so check the whole Arduino code for errors.
+
+#### Onboard sensors are not initialising or giving error
+
+Make sure to use the correct I2C addresses for all of the onboard sensors. The [Sensor code examples](#sensor-examples) for each sensor contain the correct I2C address and initialisation code. The addresses are also listed below:
+
+- **BMI270** - `0x69`
+- **BME280** - `0x76`
+- **VL53L0X** - `0x29`
+
+#### Onboard buttons do not recognised presses
+
+Make sure to pullup both onboard buttons (`Upload/Btn1` and `Btn2`), like shown in the [I/O code examples](#io-examples). Both buttons should be initialised using the `INPUT_PULLUP` option in Arduino. An example code for a button could be:
+
+```cpp
+#define pin_button1 0
+void setup() {
+  pinMode(pin_button1, INPUT_PULLUP);
+}
+```
+
+#### TinyML board crashed randomly on brownout
+
+When getting a `Brownout detector was triggered` error message, the TinyML board temporarily received too little power to run the microcontroller (called a brownout). The brownout occurs when the microcontroller and pheripherals draw much power, for example during sensor readings or large calculations. This problem is usually caused by either a bad USB-C _Data_ cable (with thin wires) or a bad power supply (e.g. the computer USB port not providing enough current). To solve this, try another USB-C _Data_ cable and / or power supply.
 
 [🔼 Back to the top](#tinyml-board-documentation)
 
