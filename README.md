@@ -35,7 +35,7 @@ The TinyML board is a development board specifically tailored to the exploration
  1. Install the ESP32 board support into Arduino IDE by adding the Espressif repository to the Board Manager and then downloading the ESP32 boards - [Espressif Arduino ESP32 installation](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html#installing-using-arduino-ide).
  2. Install libraries for the sensors ([Sparkfun BME280](https://github.com/sparkfun/SparkFun_BME280_Arduino_Library), [Sparkfun BMI270](https://github.com/sparkfun/SparkFun_BMI270_Arduino_Library), [Pololu VL53L0X](https://github.com/pololu/vl53l0x-arduino) and [FastLED](https://github.com/FastLED/FastLED)) using the Library Manager and TensorFlow Lite Micro ([TFLiteMicro_ArduinoESP32S3](https://github.com/j-siderius/TFLiteMicro_ArduinoESP32S3)) from the GitHub page.
  3. Choose an [example project](#code-examples) for the TinyML board and load the code into Arduino IDE.
- 4. Press and hold the `Upload/Btn1` button, then press the `RESET` button. Release all buttons and click `Upload`, then wait for the code to upload.
+ 4. Configure the TinyML board using the [Arduino IDE settings](#ide-configuration). Press and hold the `Upload/Btn1` button, then press the `RESET` button. Release all buttons and click `Upload`, then wait for the code to upload.
  5. Check the Serial Monitor or Serial Plotter in Arduino IDE to see the output from the model.
 
 More detailed instructions can be found in the corresponding sections below.
