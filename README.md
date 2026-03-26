@@ -176,10 +176,10 @@ In order to use the sensors on the TinyML board, some Arduino libraries are need
 
 The libraries can be installed into Arduino IDE through the Library Manager (Sketch > Include Library > Manage Libraries). The versions are included here for documentation purpose, the newest version of each library should work fine.
 
-- [Sparkfun BME280](https://github.com/sparkfun/SparkFun_BME280_Arduino_Library) (2.0.10)
-- [SparkFun BMI270](https://github.com/sparkfun/SparkFun_BMI270_Arduino_Library) (1.0.3)
-- [Pololu VL53L0X](https://github.com/pololu/vl53l0x-arduino) (1.3.1)
-- [FastLED](https://github.com/FastLED/FastLED) (3.9.13)
+- [Sparkfun BME280](https://github.com/sparkfun/SparkFun_BME280_Arduino_Library) (2.0.10 or later)
+- [SparkFun BMI270](https://github.com/sparkfun/SparkFun_BMI270_Arduino_Library) (1.0.3 or later)
+- [Pololu VL53L0X](https://github.com/pololu/vl53l0x-arduino) (1.3.1 or later)
+- [FastLED](https://github.com/FastLED/FastLED) (3.9.13 or later)
 
 The onboard [Microphone](#sensors) uses the built-in I2S library from Espressif, so there is no library to install to use the microphone. More information can be found in the [I2S Peripherals documentation](https://docs.espressif.com/projects/esp-idf/en/v3.3/api-reference/peripherals/i2s.html). 
 
@@ -336,7 +336,10 @@ Additional (advanced) examples can be found in the [ESP32 Arduino library docume
 
 ### Sensor examples
 
+<!---
 - Microphone [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-microphone-example/)
+--->
+- Microphone => Currently there is a software bug that prevents the microphone from being used
 - Time-of-Flight sensor [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-tof-example/)
 - Environmental sensor [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-environmental-example/)
 - Hall-effect magnetic sensor [![Open In Github](assets/images/github-badge.svg)](assets/example-code/tinyml-board-halleffect-example/)
